@@ -2,6 +2,23 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Category {
+  createAt: DateTime!
+  id: ID!
+  name: String
+  updateAt: DateTime!
+}
+
+input CreateCategoryDto {
+  name: String
+}
+
+input CreateProductDto {
+  name: String
+  price: Float
+  title: String
+}
+
 input CreateUserDto {
   email: String
   name: String
@@ -13,14 +30,43 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
-  create(createUser: CreateUserDto!): User!
-  remove(id: ID!): Float!
+  createCategory(createCategory: CreateCategoryDto!): Category!
+  createProduct(createProduct: CreateProductDto!): Product!
+  createUser(createUser: CreateUserDto!): User!
+  removeCategory(id: ID!): Float!
+  removeProduct(id: ID!): Float!
+  removeUser(id: ID!): Float!
+  updateCategory(id: ID!, updateCategory: UpdateCategoryDto!): Category!
+  updateProduct(id: ID!, updateProduct: UpdateProductDto!): Product!
   updateUser(id: ID!, updateUser: UpdateUserDto!): User!
 }
 
+type Product {
+  createAt: DateTime!
+  id: ID!
+  name: String!
+  price: Float!
+  title: String!
+  updateAt: DateTime!
+}
+
 type Query {
-  findAll: [User!]!
-  findOne(id: ID!): User!
+  findAllCategory: [Category!]!
+  findAllProducts: [Product!]!
+  findAllUsers: [User!]!
+  findOneCategory(id: ID!): Category!
+  findOneProduct(id: ID!): Product!
+  findOneUser(id: ID!): User!
+}
+
+input UpdateCategoryDto {
+  name: String
+}
+
+input UpdateProductDto {
+  name: String
+  price: Float
+  title: String
 }
 
 input UpdateUserDto {

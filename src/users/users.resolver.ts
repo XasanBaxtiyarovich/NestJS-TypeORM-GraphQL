@@ -9,17 +9,17 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @Mutation(() => User)
-  async create(@Args('createUser') createUserDto: CreateUserDto): Promise<User> {
+  async createUser (@Args('createUser') createUserDto: CreateUserDto): Promise<User> {
     return this.usersService.create(createUserDto);
   }
 
   @Query(() => [User]) 
-  async findAll(): Promise<User[]> {
+  async findAllUsers (): Promise<User[]> {
     return this.usersService.findAll();
   }
 
   @Query(() => User)
-  async findOne(@Args('id', { type: () => ID }) id: number): Promise<User> {
+  async findOneUser (@Args('id', { type: () => ID }) id: number): Promise<User> {
     return this.usersService.findOne(id);
   }
 
@@ -32,7 +32,7 @@ export class UsersResolver {
   }
 
   @Mutation(() => Number)
-  async remove (
+  async removeUser (
     @Args('id', { type: () => ID }) id: number 
   ): Promise<number> {
     return this.usersService.remove(id)
